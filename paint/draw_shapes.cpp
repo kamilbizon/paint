@@ -1,12 +1,22 @@
 #include "draw_shapes.h"
 #include <SFML/Graphics.hpp>
 #include <math.h>
-#include <iostream>
 
 
 
 sf::VertexArray* draw_line(float mouse_clicked_x, float mouse_clicked_y, float mouse_moved_x, float mouse_moved_y)
 {
+	if (mouse_clicked_y < 61)
+		mouse_clicked_y = 62;
+	if (mouse_clicked_y > 599)
+		mouse_clicked_y = 598;
+
+	if (mouse_moved_y < 61)
+		mouse_moved_y = 62;
+	if (mouse_moved_y > 599)
+		mouse_moved_y = 598;
+
+
 	sf::VertexArray* line = new sf::VertexArray(sf::LinesStrip, 2);
 	(*line)[0].position = sf::Vector2f(mouse_clicked_x, mouse_clicked_y);
 	(*line)[1].position = sf::Vector2f(mouse_moved_x, mouse_moved_y);
@@ -17,6 +27,17 @@ sf::VertexArray* draw_line(float mouse_clicked_x, float mouse_clicked_y, float m
 sf::RectangleShape * draw_rectangle_empty(float mouse_clicked_x, float mouse_clicked_y,
 	float mouse_moved_x, float mouse_moved_y, sf::Color fill)
 {
+	if (mouse_clicked_y < 61)
+		mouse_clicked_y = 62;
+	if (mouse_clicked_y > 599)
+		mouse_clicked_y = 598;
+
+	if (mouse_moved_y < 61)
+		mouse_moved_y = 62;
+	if (mouse_moved_y > 599)
+		mouse_moved_y = 598;
+
+
 	float height = fabs(mouse_clicked_y - mouse_moved_y);
 	float width = fabs(mouse_clicked_x - mouse_moved_x);
 

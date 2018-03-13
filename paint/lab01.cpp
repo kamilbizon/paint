@@ -74,22 +74,11 @@ int main()
 				{
 					mouse_clicked_x = (float)event.mouseButton.x;
 					mouse_clicked_y = (float)event.mouseButton.y;
-
-					if (mouse_clicked_y < 61)
-						mouse_clicked_y = 62;
-					if (mouse_clicked_y > 599)
-						mouse_clicked_y = 598;
-
 			}
 			if (event.type == sf::Event::MouseMoved)
 			{
 				mouse_moved_x = (float)event.mouseMove.x;
 				mouse_moved_y = (float)event.mouseMove.y;
-
-				if (mouse_moved_y < 61)
-					mouse_moved_y = 62;
-				if (mouse_moved_y > 599)
-					mouse_moved_y = 598;
 			}
 			if (event.type == sf::Event::MouseButtonReleased)
 			{
@@ -105,15 +94,17 @@ int main()
 		window.draw(menu);
 		window.draw(background.get_sprite());
 
-		// Draw Shapes
+		// Wykonywanie dzialania zgodnego z flaga, pobieranie koloru i rysowanie ksztaltow
 		if(mouse_moved_x != 0 && mouse_moved_y != 0 && mouse_clicked_x != 0 && mouse_clicked_y != 0)
 		{
 			sf::Drawable *shape = NULL;
 			switch (menu.get_flag())
 			{
 			case(L'f'):
+				menu.set_draw_color((int)mouse_clicked_x, (int)mouse_clicked_y);
 				break;
 			case(L'b'):
+				menu.set_fill_color((int)mouse_clicked_x, (int)mouse_clicked_y);
 				break;
 			case(L'l'):
 				shape = draw_line(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y);
@@ -133,7 +124,6 @@ int main()
 			if (shape != NULL)
 			{
 				window.draw(*shape);
-				std::cout << "rysuje\n";
 				delete shape;
 			}
 

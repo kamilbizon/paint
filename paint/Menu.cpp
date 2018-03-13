@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "font.h"
 #include <string.h>
+#include <iostream>
 
 
 
@@ -13,11 +14,26 @@ Menu::Menu()
 	text->setCharacterSize(12);
 	text->setFillColor(sf::Color::White);
 
+	
 	rectangle = new sf::RectangleShape(sf::Vector2f(796, 536));
 	rectangle->setFillColor(sf::Color::Transparent);
 	rectangle->setOutlineColor(sf::Color::White);
 	rectangle->setOutlineThickness(1.0f);
 	rectangle->setPosition(2, 62);
+
+
+	draw_color_rectangle = new sf::RectangleShape(sf::Vector2f(32, 29));
+	draw_color_rectangle->setFillColor(sf::Color::Transparent);
+	draw_color_rectangle->setOutlineColor(sf::Color::Transparent);
+	draw_color_rectangle->setOutlineThickness(1.0f);
+	draw_color_rectangle->setPosition(767, 1);
+
+	fill_color_rectangle = new sf::RectangleShape(sf::Vector2f(32, 29));
+	fill_color_rectangle->setFillColor(sf::Color::Transparent);
+	fill_color_rectangle->setOutlineColor(sf::Color::Transparent);
+	fill_color_rectangle->setOutlineThickness(1.0f);
+	fill_color_rectangle->setPosition(767, 31);
+
 
 	unsigned int x, y;
 	colors_pixels = new sf::Uint8[colors_size_x * colors_size_y * 4];
@@ -75,4 +91,35 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	target.draw(*rectangle);
 	target.draw(*colors_sprite);
+	target.draw(*draw_color_rectangle);
+	target.draw(*fill_color_rectangle);
+}
+
+void Menu::set_draw_color(int mouse_clicked_x, int mouse_clicked_y)
+{
+	std::cout << mouse_clicked_x << " , " << mouse_clicked_y << '\n';
+	if (mouse_clicked_x < 766 && mouse_clicked_y < 60)
+	{
+		std::cout << "draw\n";
+		set_color(mouse_clicked_x, mouse_clicked_y, draw_color);
+		draw_color_rectangle->setFillColor(draw_color);
+	}
+}
+
+void Menu::set_fill_color(int mouse_clicked_x, int mouse_clicked_y)
+{
+	if (mouse_clicked_x < 766 && mouse_clicked_y < 60)
+	{
+		std::cout << "fill\n";
+		set_color(mouse_clicked_x, mouse_clicked_y, fill_color);
+		fill_color_rectangle->setFillColor(fill_color);
+	}
+}
+
+void Menu::set_color(int mouse_clicked_x, int mouse_clicked_y, sf::Color &color)
+{
+	color.r = colors_pixels[4 * (mouse_clicked_y * colors_size_x + mouse_clicked_x) + 0];
+	color.g = colors_pixels[4 * (mouse_clicked_y * colors_size_x + mouse_clicked_x) + 1];
+	color.b = colors_pixels[4 * (mouse_clicked_y * colors_size_x + mouse_clicked_x) + 2];
+	color.a = colors_pixels[4 * (mouse_clicked_y * colors_size_x + mouse_clicked_x) + 3];
 }

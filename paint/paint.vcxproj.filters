@@ -38,7 +38,7 @@
     <ClCompile Include="Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="draw_shapescpp.cpp">
+    <ClCompile Include="draw_shapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,6 +8,12 @@ private:
 	sf::Text *text;
 	sf::RectangleShape *rectangle;
 
+	sf::RectangleShape *draw_color_rectangle;
+	sf::RectangleShape *fill_color_rectangle;
+
+	sf::Color draw_color;
+	sf::Color fill_color;
+
 	sf::Texture *colors_texture;
 	sf::Sprite *colors_sprite;
 	sf::Uint8 *colors_pixels;
@@ -19,6 +25,7 @@ private:
 
 	inline void draw_to_color_pixels(unsigned int x, unsigned int y, unsigned char r, unsigned char g, unsigned char b);
 
+	void set_color(int mouse_clicked_x, int mouse_clicked_y, sf::Color &color);
 public:
 	Menu();
 
@@ -30,16 +37,11 @@ public:
 	{
 		return flag;
 	}
-
 	void set_flag(const wchar_t flag)
 	{
 		this->flag = flag;
 	}
 
-	void set_rectangle_texture(const sf::Texture *background)
-	{
-		rectangle->setTexture(background);
-		rectangle->setTextureRect(sf::IntRect(2, 61, 500, 400));
-	}
-
+	void set_draw_color(int mouse_clicked_x, int mouse_clicked_y);
+	void set_fill_color(int mouse_clicked_x, int mouse_clicked_y);
 };
