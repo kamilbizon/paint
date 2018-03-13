@@ -36,4 +36,9 @@ public:
 		this->flag = flag;
 	}
 
+	void set_rectangle_texture(const sf::Texture *background)
+	{
+		rectangle->setTexture(background);
+	}
+
 };
