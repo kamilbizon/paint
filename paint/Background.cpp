@@ -15,7 +15,6 @@ void Background::update_window_texture(sf::RenderWindow &window)
 
 void Background::save_image()
 {
-	image = window_texture.copyToImage();
 	image = sprite.getTexture()->copyToImage();
 	image.copy(image, 0, 0, sf::IntRect(3, 62, 794, 200));
 	image.saveToFile("obrazek.bmp");
