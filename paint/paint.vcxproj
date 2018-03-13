@@ -117,10 +117,12 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="font.h" />
+    <ClInclude Include="draw_shapes.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="draw_shapescpp.cpp" />
     <ClCompile Include="lab01.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
