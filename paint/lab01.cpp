@@ -107,15 +107,18 @@ int main()
 				menu.set_fill_color((int)mouse_clicked_x, (int)mouse_clicked_y);
 				break;
 			case(L'l'):
-				shape = draw_line(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y);
+				shape = draw_line(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y,
+								  menu.get_draw_color(), menu.get_fill_color());
 				break;
 			case(L'r'):
 				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y,
-											 mouse_moved_x, mouse_moved_y, sf::Color::Transparent);
+											 mouse_moved_x, mouse_moved_y, 
+											 menu.get_draw_color(), sf::Color::Transparent);
 				break;
 			case(L'a'):
 				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y,
-					mouse_moved_x, mouse_moved_y, sf::Color::Green);
+											 mouse_moved_x, mouse_moved_y,
+											 menu.get_draw_color(), menu.get_fill_color());
 				break;
 			case(L'c'):
 				break;

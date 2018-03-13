@@ -44,4 +44,12 @@ public:
 
 	void set_draw_color(int mouse_clicked_x, int mouse_clicked_y);
 	void set_fill_color(int mouse_clicked_x, int mouse_clicked_y);
+	sf::Color get_draw_color()
+	{
+		return draw_color;
+	}
+	sf::Color get_fill_color()
+	{
+		return fill_color;
+	}
 };
