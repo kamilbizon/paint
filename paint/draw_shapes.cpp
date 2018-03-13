@@ -73,7 +73,7 @@ sf::CircleShape* draw_circle(float mouse_clicked_x, float mouse_clicked_y,
 		float x = mouse_moved_x - mouse_clicked_x;
 		float y = mouse_moved_y - mouse_clicked_y;
 		float radius = fabs(sqrt(x*x + y*y)/1.95);
-		float angle = atan(y/x) * 180.0 / M_PI;
+		float angle = atan2(y, x) * 180.0 / M_PI;
 
 		std::cout << angle <<"\n";
 
@@ -82,10 +82,10 @@ sf::CircleShape* draw_circle(float mouse_clicked_x, float mouse_clicked_y,
 		circle->setFillColor(sf::Color::Transparent);
 		circle->setOutlineColor(draw_color);
 		circle->setOutlineThickness(1.0f);
-		circle->setPosition(mouse_clicked_x, mouse_clicked_y - radius * 0.5);
-		circle->setOrigin(0, radius * 0.5);
+		circle->setPosition(mouse_clicked_x - radius * 0.5, mouse_clicked_y - radius * 0.5);
+		//circle->setOrigin(0, radius * 0.5);
 		circle->setRadius(radius);
-		circle->setRotation(angle);
+		//circle->setRotation(angle);
 
 		return circle;
 	}
