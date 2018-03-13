@@ -3,6 +3,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
+#include "Background.h"
 
 #include <iostream>
 
@@ -19,10 +20,7 @@ int main()
 	float mouse_clicked_x = 0, mouse_clicked_y = 0;
 	float mouse_moved_x = 0, mouse_moved_y = 0;
 
-	sf::Texture background;
-	background.create(800, 650);
-
-	sf::Sprite sprite;
+	Background background;
 
 	bool is_shape_drawed = false;
  
@@ -60,8 +58,10 @@ int main()
 					menu.set_flag(L'c');
 					break;
 				case(sf::Keyboard::W):
+					menu.set_flag(L' ');
 					break;
 				case(sf::Keyboard::O):
+					menu.set_flag(L' ');
 					break;
 				case(sf::Keyboard::Escape):
 					window.close();
@@ -103,19 +103,23 @@ int main()
 		//Draw BEGIN
 		// Pomiêdzy "Draw BEGIN" a "Draw End" trzeba "cos" dopisac :-). Na pewno znajd¹ siê tam te dwie linijki:
 		window.draw(menu);
-		window.draw(sprite);
+		window.draw(background.get_sprite());
 
 		
 		if(mouse_moved_x != 0 && mouse_moved_y != 0 && mouse_clicked_x != 0 && mouse_clicked_y != 0)
 		{
+			switch (menu.get_flag())
+			{
+			default:
+				break;
+			}
 			sf::VertexArray line = draw_line(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y);
 
 			window.draw(line);
 
 			if (is_shape_drawed)
 			{
-				background.update(window);
-				sprite.setTexture(background);
+				background.update_window_texture(window);
 				is_shape_drawed = false;
 
 				mouse_clicked_x = 0;

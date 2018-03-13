@@ -49,7 +49,6 @@ inline void Menu::draw_to_color_pixels(unsigned int x, unsigned int y, unsigned 
 	colors_pixels[4 * (y * colors_size_x + x) + 3] = 255;
 }
 
-
 void Menu::outtextxy(sf::RenderTarget& target, float x, float y, const wchar_t *str) const
 {
 	text->setPosition(x, y);

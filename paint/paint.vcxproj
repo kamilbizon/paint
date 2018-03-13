@@ -115,10 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="font.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="lab01.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
