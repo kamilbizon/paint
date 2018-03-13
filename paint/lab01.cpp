@@ -62,6 +62,7 @@ int main()
 					break;
 				case(sf::Keyboard::O):
 					menu.set_flag(L' ');
+					background.read_from_file();
 					break;
 				case(sf::Keyboard::Escape):
 					window.close();

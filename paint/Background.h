@@ -19,6 +19,7 @@ public:
 	}
 
 	void save_image();
+	void read_from_file();
 	
 private:
 	sf::Texture window_texture;

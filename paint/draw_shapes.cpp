@@ -1,8 +1,9 @@
 #include "draw_shapes.h"
 #include <SFML/Graphics.hpp>
-#include <math.h>
+#include <cmath>
+#include <iostream>
 
-
+#define M_PI 3.14159265358979323846
 
 sf::VertexArray* draw_line(float mouse_clicked_x, float mouse_clicked_y,
 	float mouse_moved_x, float mouse_moved_y, sf::Color draw_color, sf::Color fill_color)
@@ -69,12 +70,22 @@ sf::CircleShape* draw_circle(float mouse_clicked_x, float mouse_clicked_y,
 		if (mouse_moved_y > 599)
 			mouse_moved_y = 598;
 
-		sf::CircleShape* circle = new sf::CircleShape(50);
+		float x = mouse_moved_x - mouse_clicked_x;
+		float y = mouse_moved_y - mouse_clicked_y;
+		float radius = fabs(sqrt(x*x + y*y)/1.95);
+		float angle = atan(y/x) * 180.0 / M_PI;
+
+		std::cout << angle <<"\n";
+
+		sf::CircleShape* circle = new sf::CircleShape(0.1f);
 
 		circle->setFillColor(sf::Color::Transparent);
 		circle->setOutlineColor(draw_color);
 		circle->setOutlineThickness(1.0f);
-		circle->setPosition(mouse_clicked_x, mouse_clicked_y);
+		circle->setPosition(mouse_clicked_x, mouse_clicked_y - radius * 0.5);
+		circle->setOrigin(0, radius * 0.5);
+		circle->setRadius(radius);
+		circle->setRotation(angle);
 
 		return circle;
 	}
