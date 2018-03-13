@@ -82,8 +82,6 @@ int main()
 			}
 			if (event.type == sf::Event::MouseButtonReleased)
 			{
-				std::cout << "realeas";
-
 				is_shape_drawed = true;
 			}
 		}
@@ -111,16 +109,16 @@ int main()
 								  menu.get_draw_color(), menu.get_fill_color());
 				break;
 			case(L'r'):
-				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y,
-											 mouse_moved_x, mouse_moved_y, 
+				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y, 
 											 menu.get_draw_color(), sf::Color::Transparent);
 				break;
 			case(L'a'):
-				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y,
-											 mouse_moved_x, mouse_moved_y,
+				shape = draw_rectangle_empty(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y,
 											 menu.get_draw_color(), menu.get_fill_color());
 				break;
 			case(L'c'):
+				shape = draw_circle(mouse_clicked_x, mouse_clicked_y, mouse_moved_x, mouse_moved_y,
+									menu.get_draw_color());
 				break;
 			}
 

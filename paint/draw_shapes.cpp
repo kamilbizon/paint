@@ -7,53 +7,77 @@
 sf::VertexArray* draw_line(float mouse_clicked_x, float mouse_clicked_y,
 	float mouse_moved_x, float mouse_moved_y, sf::Color draw_color, sf::Color fill_color)
 {
-	if (mouse_clicked_y < 61)
-		mouse_clicked_y = 62;
-	if (mouse_clicked_y > 599)
-		mouse_clicked_y = 598;
-
-	if (mouse_moved_y < 61)
-		mouse_moved_y = 62;
-	if (mouse_moved_y > 599)
-		mouse_moved_y = 598;
+	if (mouse_clicked_y > 61 && mouse_clicked_y < 599)
+	{
+		// jezeli rysujacy wyjedzie poza krawedz obszaru rysowania przenies wspolrzedna do wnetrza obszaru
+		if (mouse_moved_y < 61)
+			mouse_moved_y = 62;
+		if (mouse_moved_y > 599)
+			mouse_moved_y = 598;
 
 
-	sf::VertexArray* line = new sf::VertexArray(sf::LinesStrip, 2);
-	(*line)[0].position = sf::Vector2f(mouse_clicked_x, mouse_clicked_y);
-	(*line)[0].color = draw_color;
-	(*line)[1].position = sf::Vector2f(mouse_moved_x, mouse_moved_y);
-	(*line)[1].color = fill_color;
+		sf::VertexArray* line = new sf::VertexArray(sf::LinesStrip, 2);
+		(*line)[0].position = sf::Vector2f(mouse_clicked_x, mouse_clicked_y);
+		(*line)[0].color = draw_color;
+		(*line)[1].position = sf::Vector2f(mouse_moved_x, mouse_moved_y);
+		(*line)[1].color = fill_color;
 
-	return line;
+		return line;
+	}
+	else
+		return NULL;
 }
 
 sf::RectangleShape * draw_rectangle_empty(float mouse_clicked_x, float mouse_clicked_y,
 	float mouse_moved_x, float mouse_moved_y, sf::Color outline_color, sf::Color fill_color)
 {
-	if (mouse_clicked_y < 61)
-		mouse_clicked_y = 62;
-	if (mouse_clicked_y > 599)
-		mouse_clicked_y = 598;
-
-	if (mouse_moved_y < 61)
-		mouse_moved_y = 62;
-	if (mouse_moved_y > 599)
-		mouse_moved_y = 598;
+	if (mouse_clicked_y > 61 && mouse_clicked_y < 599)
+	{
+		if (mouse_moved_y < 61)
+			mouse_moved_y = 62;
+		if (mouse_moved_y > 599)
+			mouse_moved_y = 598;
 
 
-	float height = fabs(mouse_clicked_y - mouse_moved_y);
-	float width = fabs(mouse_clicked_x - mouse_moved_x);
+		float height = fabs(mouse_clicked_y - mouse_moved_y);
+		float width = fabs(mouse_clicked_x - mouse_moved_x);
 
-	float lower_x = (mouse_clicked_x < mouse_moved_x) ? mouse_clicked_x : mouse_moved_x;
-	float lower_y = (mouse_clicked_y < mouse_moved_y) ? mouse_clicked_y : mouse_moved_y;
+		float lower_x = (mouse_clicked_x < mouse_moved_x) ? mouse_clicked_x : mouse_moved_x;
+		float lower_y = (mouse_clicked_y < mouse_moved_y) ? mouse_clicked_y : mouse_moved_y;
 
 
 
-	sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2f(width, height));
-	rectangle->setFillColor(fill_color);
-	rectangle->setOutlineColor(outline_color);
-	rectangle->setOutlineThickness(1.0f);
-	rectangle->setPosition(lower_x, lower_y);
+		sf::RectangleShape* rectangle = new sf::RectangleShape(sf::Vector2f(width, height));
+		rectangle->setFillColor(fill_color);
+		rectangle->setOutlineColor(outline_color);
+		rectangle->setOutlineThickness(1.0f);
+		rectangle->setPosition(lower_x, lower_y);
 
-	return rectangle;
+		return rectangle;
+	}
+	else
+		return NULL;
+}
+
+sf::CircleShape* draw_circle(float mouse_clicked_x, float mouse_clicked_y,
+	float mouse_moved_x, float mouse_moved_y, sf::Color draw_color)
+{
+	if (mouse_clicked_y > 61 && mouse_clicked_y < 599)
+	{
+		if (mouse_moved_y < 61)
+			mouse_moved_y = 62;
+		if (mouse_moved_y > 599)
+			mouse_moved_y = 598;
+
+		sf::CircleShape* circle = new sf::CircleShape(50);
+
+		circle->setFillColor(sf::Color::Transparent);
+		circle->setOutlineColor(draw_color);
+		circle->setOutlineThickness(1.0f);
+		circle->setPosition(mouse_clicked_x, mouse_clicked_y);
+
+		return circle;
+	}
+	else
+		return NULL;
 }

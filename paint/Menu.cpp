@@ -97,10 +97,8 @@ void Menu::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Menu::set_draw_color(int mouse_clicked_x, int mouse_clicked_y)
 {
-	std::cout << mouse_clicked_x << " , " << mouse_clicked_y << '\n';
 	if (mouse_clicked_x < 766 && mouse_clicked_y < 60)
 	{
-		std::cout << "draw\n";
 		set_color(mouse_clicked_x, mouse_clicked_y, draw_color);
 		draw_color_rectangle->setFillColor(draw_color);
 	}
@@ -110,7 +108,6 @@ void Menu::set_fill_color(int mouse_clicked_x, int mouse_clicked_y)
 {
 	if (mouse_clicked_x < 766 && mouse_clicked_y < 60)
 	{
-		std::cout << "fill\n";
 		set_color(mouse_clicked_x, mouse_clicked_y, fill_color);
 		fill_color_rectangle->setFillColor(fill_color);
 	}
