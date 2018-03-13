@@ -13,7 +13,12 @@ public:
 		return sprite;
 	}
 
-	
+	sf::Texture* get_window_texture()
+	{
+		return &window_texture;
+	}
+
+	void save_image();
 	
 private:
 	sf::Texture window_texture;

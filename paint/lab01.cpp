@@ -59,6 +59,7 @@ int main()
 					break;
 				case(sf::Keyboard::W):
 					menu.set_flag(L' ');
+					background.save_image();
 					break;
 				case(sf::Keyboard::O):
 					menu.set_flag(L' ');
@@ -120,6 +121,7 @@ int main()
 			if (is_shape_drawed)
 			{
 				background.update_window_texture(window);
+
 				is_shape_drawed = false;
 
 				mouse_clicked_x = 0;

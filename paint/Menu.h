@@ -39,6 +39,7 @@ public:
 	void set_rectangle_texture(const sf::Texture *background)
 	{
 		rectangle->setTexture(background);
+		rectangle->setTextureRect(sf::IntRect(2, 61, 500, 400));
 	}
 
 };
