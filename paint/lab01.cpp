@@ -1,5 +1,6 @@
 // Calosc mozna dowolnie edytowac wedle uznania. 
 
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup") //nie wyœwietla konsoli
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
